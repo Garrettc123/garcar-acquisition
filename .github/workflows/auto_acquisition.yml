@@ -1,0 +1,53 @@
+name: Bootstrap + Auto Acquisition
+
+on:
+  schedule:
+    - cron: '0 14 * * 1,3,5'   # Mon/Wed/Fri 9AM CDT (14:00 UTC)
+  workflow_dispatch:
+    inputs:
+      stage_mode:
+        description: 'Which stages to send'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - only_stage_1
+          - only_stage_2
+          - only_stage_3
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install boto3
+
+      - name: Create sent_log if missing
+        run: |
+          if [ ! -f sent_log.json ]; then
+            echo '{}' > sent_log.json
+          fi
+
+      - name: Run Auto Acquisition
+        env:
+          AWS_ACCESS_KEY_ID:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION:    us-east-1
+          STAGE_MODE:            ${{ github.event.inputs.stage_mode || 'all' }}
+        run: python auto_acquisition.py
+
+      - name: Commit updated send log
+        run: |
+          git config user.name  "Garcar Bot"
+          git config user.email "bot@garcarenterprise.com"
+          git add sent_log.json
+          git diff --staged --quiet || git commit -m "auto: log $(date +%Y-%m-%d %H:%M)"
+          git push
