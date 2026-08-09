@@ -1,1 +1,12 @@
-{}
+{
+  "Reynolds Glass": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@reynoldsglass.com"},
+  "Tarrant Roofing": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "contact@tarrantroofing.com"},
+  "DFW General Contractors": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@dfwgc.com"},
+  "Johnson Roofing & Construction": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "hello@johnsonroofingdfw.com"},
+  "Premier Contractors DFW": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@premiercontractorsdfw.com"},
+  "Lone Star Roofing": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@lonestarroofing.com"},
+  "Cleburne Construction Co": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@cleburneconstruction.com"},
+  "North Texas Builders": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "hello@ntxbuilders.com"},
+  "Alliance Roofing DFW": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "contact@allianceroofingdfw.com"},
+  "Metro Roofing Solutions": {"stage": 1, "last_sent": "2026-08-09T13:40:00Z", "email": "info@metroroofingdfw.com"}
+}
